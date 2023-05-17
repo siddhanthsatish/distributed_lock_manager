@@ -2,7 +2,7 @@
 
 The Distributed Lock Manager (DLM) is a system or service designed to facilitate coordination and management of locks in a distributed environment. It provides several utilities and advantages to ensure efficient and reliable resource sharing among multiple processes or nodes.
 
-**Key Features**
+**Key Features** </br>
 
 **1. Communication Protocol:** Define a communication protocol to facilitate communication between the lock manager and the processes or nodes. This can be achieved using network sockets, message queues, or existing distributed systems frameworks like Apache Kafka or RabbitMQ.
 **2. Lock Manager Node:** Create a central node that acts as the lock manager. This node will be responsible for managing and coordinating the locks across the network.
