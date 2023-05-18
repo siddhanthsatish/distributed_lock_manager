@@ -47,15 +47,15 @@ lock_manager = LockManager("localhost", 8888)
 lock_manager.start()
 ```
 
-Request a READ/WRITE lock
-response = lock_manager.request_lock("resource1", "client1", "READ")
-response = lock_manager.request_lock("resource1", "client1", "WRITE")
-print(f"Lock request response: {response}")
+Request a READ/WRITE lock</br>
+response = lock_manager.request_lock("resource1", "client1", "READ")</br>
+response = lock_manager.request_lock("resource1", "client1", "WRITE")</br>
+print(f"Lock request response: {response}")</br>
 
-Release the lock
-response = lock_manager.release_lock("resource1", "client1")
-print(f"Lock release response: {response}")
-lock_manager.terminate()
+Release the lock</br>
+response = lock_manager.release_lock("resource1", "client1")</br>
+print(f"Lock release response: {response}")</br>
+lock_manager.terminate()</br>
 
 ## Testing
 
