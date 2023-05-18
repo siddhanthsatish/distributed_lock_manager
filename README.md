@@ -4,6 +4,14 @@
 
 The `LockManager` is a Python class that provides a simple mechanism for managing locks over a network. This lock manager is useful in distributed systems where multiple processes may need to coordinate access to shared resources.
 
+The `LockManager` allows clients to request locks of two types: `READ` and `WRITE`. These locks are granted based on the following rules:
+
+- Any number of `READ` locks can be granted simultaneously.
+- `WRITE` lock is exclusive; no other `READ` or `WRITE` lock can be active at the same time.
+- If a lock cannot be granted immediately due to conflicts with existing locks, the request will fail.
+
+Locks have a built-in timeout and will automatically be released after a specified period of time.
+
 ## Features
 
 - Two types of locks: **READ** and **WRITE**.
