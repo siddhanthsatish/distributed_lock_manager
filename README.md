@@ -35,19 +35,13 @@ Here is a simple way to run the script:
 
 1. Save the script to a file, for example, `lock_manager.py`.
 2. Run the script from your terminal or command line:
-
 ```bash
 python lock_manager.py
 This will automatically start the Lock Manager and execute the test cases defined in the test_lock_manager() function.
 ```
-To use the Lock Manager
-
-### How to Use
 
 To use the `LockManager`, you need to start a LockManager server and then use client requests to acquire and release locks.
-
 Here is an example of how to use the `LockManager`:
-
 ```python
 lock_manager = LockManager("localhost", 8888)
 lock_manager.start()
