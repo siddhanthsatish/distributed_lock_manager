@@ -1,14 +1,65 @@
-**Distributed Lock Manager**
+# Lock Manager
 
-The Distributed Lock Manager (DLM) is a system or service designed to facilitate coordination and management of locks in a distributed environment. It provides several utilities and advantages to ensure efficient and reliable resource sharing among multiple processes or nodes.
+## Description
 
-**Key Features** </br>
+The `LockManager` is a Python class that provides a simple mechanism for managing locks over a network. This lock manager is useful in distributed systems where multiple processes may need to coordinate access to shared resources.
 
-**1. Communication Protocol:** Define a communication protocol to facilitate communication between the lock manager and the processes or nodes. This can be achieved using network sockets, message queues, or existing distributed systems frameworks like Apache Kafka or RabbitMQ.</br>
-**2. Lock Manager Node:** Create a central node that acts as the lock manager. This node will be responsible for managing and coordinating the locks across the network. </br>
-**3. Lock Request and Release:** Implement functions for requesting and releasing locks. Each process or node that needs to access a shared resource should communicate with the lock manager to request and release locks. The lock manager maintains the status of each lock and grants or denies access based on availability.</br>
-**4. Lock Types:** Decide on the types of locks that the lock manager should support. Common lock types include exclusive (write) locks and shared (read) locks. The lock manager should ensure that multiple processes can hold shared locks simultaneously, but only one process can hold an exclusive lock.</br>
-**5. Lock Conflict Resolution:** Develop a mechanism to handle lock conflicts when multiple processes request the same lock simultaneously. You can employ different strategies such as a queue or priority system to handle requests based on fairness or priority.</br>
-**6. Lock Timeouts:** Consider implementing lock timeouts to prevent deadlocks in case a process fails or becomes unresponsive. If a process holds a lock for too long, the lock manager can automatically release the lock to allow other processes to access the resource.</br>
-**7. Lock Metadata and State:** Maintain metadata and state information for each lock. This information includes the lock owner, lock status (e.g., free, locked), and any additional data required for conflict resolution or deadlock detection.</br>
-**8. Fault Tolerance:** Design the lock manager to be fault-tolerant. This may involve replicating the lock manager node across multiple machines or using distributed consensus algorithms like Raft or Paxos to ensure consistency and availability in the face of failures.</br>
+## Features
+
+- Two types of locks: **READ** and **WRITE**.
+- Management of concurrent requests.
+- Timeout functionality for locks to prevent indefinite lock holding.
+
+## Dependencies
+
+This script relies on the following built-in Python libraries:
+
+1. `socket`
+2. `threading`
+3. `time`
+4. `multiprocessing`
+
+It has been developed and tested with Python 3.x. Please make sure you have a compatible Python version before running this script. 
+
+## Usage
+
+Here is a simple way to run the script:
+
+1. Save the script to a file, for example, `lock_manager.py`.
+2. Run the script from your terminal or command line:
+
+```bash
+python lock_manager.py
+This will automatically start the Lock Manager and execute the test cases defined in the test_lock_manager() function.
+```
+To use the Lock Manager
+
+## How to Use
+
+To use the `LockManager`, you need to start a LockManager server and then use client requests to acquire and release locks.
+
+Here is an example of how to use the `LockManager`:
+
+```python
+lock_manager = LockManager("localhost", 8888)
+lock_manager.start()
+```
+
+# Request a WRITE lock
+response = lock_manager.request_lock("resource1", "client1", "WRITE")
+print(f"Lock request response: {response}")
+
+# Release the lock
+response = lock_manager.release_lock("resource1", "client1")
+print(f"Lock release response: {response}")
+
+lock_manager.terminate()
+
+## Testing
+
+The script includes a testing function, `test_lock_manager()`, that you can use to verify the functionality of the `LockManager`. It executes several test scenarios and asserts the expected outcomes. Here is an example of how to run this function:
+
+```python
+if __name__ == "__main__":
+    test_lock_manager()
+```
